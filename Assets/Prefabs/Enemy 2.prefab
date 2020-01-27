@@ -107,7 +107,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d50196daa7440ae4ea93416c2d0d93c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyLaser: {fileID: 1500649995998680988, guid: 6825b053240ef044fac80c0d9a6a6077,
+    type: 3}
+  projectileSpeed: 10
   health: 500
+  shotCounter: 0
+  minTimeBetweenShots: 0.2
+  maxTimeBetweenShots: 3
 --- !u!58 &1774116939984407788
 CircleCollider2D:
   m_ObjectHideFlags: 0

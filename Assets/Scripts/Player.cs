@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Player Movement")]
     [SerializeField] private float playerSpeed = 20f;
     [SerializeField] private float boundaryOffset = 0.5f;
     [SerializeField] private GameObject projectilePrefab;

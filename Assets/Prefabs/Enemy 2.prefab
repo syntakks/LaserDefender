@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 368713999123924372}
   - component: {fileID: 2629635909366743368}
   - component: {fileID: 1774116939984407788}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Enemy 2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,13 +107,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d50196daa7440ae4ea93416c2d0d93c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 300
   enemyLaser: {fileID: 1500649995998680988, guid: 6825b053240ef044fac80c0d9a6a6077,
     type: 3}
   projectileSpeed: 10
-  health: 500
   shotCounter: 0
   minTimeBetweenShots: 0.2
   maxTimeBetweenShots: 3
+  deathVFX: {fileID: 8141778175064844304, guid: 10089e65e8bdc1248b1c305d9cad8929,
+    type: 3}
+  durationOfExplosion: 1
+  deathSFX: {fileID: 8300000, guid: d6e398861fca4974f9bf636ee7d43866, type: 3}
+  deathVolume: 0.75
+  shootSound: {fileID: 8300000, guid: 3bb2cb6ed5648344ea309cee46817dc9, type: 3}
+  shootVolume: 0.25
 --- !u!58 &1774116939984407788
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -3,12 +3,19 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [Header("Player Movement")]
+    [Header("Player")]
+    [SerializeField] private int health = 200;
     [SerializeField] private float playerSpeed = 20f;
     [SerializeField] private float boundaryOffset = 0.5f;
+    [Header("Projectile")]
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float projectileSpeed = 10;
     [SerializeField] private float fireCooldown = 0.1f;
+    [Header("SFX")]
+    [SerializeField] private AudioClip deathSFX;
+    [Range(0, 1)] [SerializeField] float deathVolume = 0.75f;
+    [SerializeField] private AudioClip shootSound;
+    [Range(0, 1)] [SerializeField] float shootVolume = 0.25f;
     Coroutine firingCoroutine; 
     private float xMin;
     private float xMax;
@@ -64,8 +71,40 @@ public class Player : MonoBehaviour
         {
             GameObject projectile = Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y, 0f), Quaternion.identity);
             projectile.GetComponent<Rigidbody2D>().velocity = Vector2.up * projectileSpeed;
+            AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position, shootVolume);
             Destroy(projectile, 2f);
             yield return new WaitForSeconds(fireCooldown);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        CheckHit(other); 
+    }
+
+
+    // Projectiles trigger this. 
+    private void CheckHit(Collider2D other)
+    {
+        if (other.gameObject.tag == "Enemy" ||
+            other.gameObject.tag == "Enemy Projectile")
+        {
+            DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
+            if (damageDealer != null)
+            {
+                damageDealer.Hit();
+            }
+            health -= 100;
+            CheckDeath();
+        }
+    }
+
+    private void CheckDeath()
+    {
+        if (health < 1)
+        {
+            Destroy(gameObject);
+            AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, 0.5f);
         }
     }
 }

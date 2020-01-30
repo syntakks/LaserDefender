@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8233117636370673606}
   - component: {fileID: 7609469294469481868}
   - component: {fileID: 1679095111318805464}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: LaserProjectile 1
   m_TagString: Enemy Projectile
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

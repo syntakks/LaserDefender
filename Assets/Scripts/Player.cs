@@ -103,8 +103,14 @@ public class Player : MonoBehaviour
     {
         if (health < 1)
         {
-            Destroy(gameObject);
-            AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, 0.5f);
+            GameOver();  
         }
+    }
+
+    private void GameOver()
+    {
+        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, 0.5f);
+        FindObjectOfType<LevelLoader>().LoadGameOver();
+        Destroy(gameObject);
     }
 }
